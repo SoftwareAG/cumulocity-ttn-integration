@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.cumulocity</groupId>
+    <artifactId>c8y-lora</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>c8y-lora-parent</name>
+    <description>LoRa Parent</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.target>11</maven.compiler.target>
+        <spring-boot-dependencies.version>2.2.4.RELEASE</spring-boot-dependencies.version>
+
+        <c8y.version>1006.1.0</c8y.version>
+
+        <lombok.version>1.18.10</lombok.version>
+        <jackson.version>2.9.9</jackson.version>
+        <svenson.version>1.5.8</svenson.version>
+        <junit.version>4.12</junit.version>
+        <mavenc.version>3.8.1</mavenc.version>
+    </properties>
+
+    <modules>
+        <module>c8y-ttn-integration</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>cumulocity</id>
+            <layout>default</layout>
+            <url>http://download.cumulocity.com/maven/repository</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <url>http://download.cumulocity.com/maven/repository</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nsn.cumulocity.clients-java</groupId>
+                <artifactId>microservice-dependencies</artifactId>
+                <version>${c8y.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.nsn.cumulocity.clients-java</groupId>
+                <artifactId>microservice-autoconfigure</artifactId>
+                <version>${c8y.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nsn.cumulocity.model</groupId>
+                <artifactId>device-capability-model</artifactId>
+                <version>${c8y.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${mavenc.version}</version>
+                    <configuration>
+                        <release>${maven.compiler.target}</release>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot-dependencies.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
