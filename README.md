@@ -1,12 +1,12 @@
 # Cumulocity - The Things Network Integration
 
-##Summary
+## Summary
 
 This Cumulocity Microservice enables your [Cumulocity IoT](https://www.softwareag.cloud/site/product/cumulocity-iot.html#/) tenant to integrate with the LoRa network provider [The Things Network (TTN)](https://www.thethingsnetwork.org ). This integration allows to receive uplink messages from TTN and process them within Cumulocity IoT, e.g. extract Measurements or Events from the message. Based on the data received from TTN you can use the viusalization and Streaming Analytics capabilities of Cumulocity for further processing.
 
 The TTN integration is compatible with latest version of **The Things Stack V3**.
 
-##Some more details
+## Some more details
 
 The Microservice exposes a single REST endpoint. This endpoint will be used in TTN for the Webhooks integration to forward data received from devices in TTN to Cumulocity IoT. 
 
@@ -64,7 +64,7 @@ A device will automatically be created in Cumulocity if a message has been recei
 
 The Microservice will pick up the related Device Protocol for the device. When a new message is being received from TTN for the device, the Microservice will use the Device Protocol to translate the message into the respective domain objects of Cumulocity.
 
-##How to run locally
+## How to run locally
 
 The Microservice is based on the Cumulocity Java Microservice SDK. For an introduction and more information on the Java SDK have a look at the [documentation](https://cumulocity.com/guides/microservice-sdk/java/#java-microservice). The documentation also describes the necessary steps to run a Microservice locally.
 
@@ -125,7 +125,7 @@ The Microservice is based on the Cumulocity Java Microservice SDK. For an introd
 
     Run the Microservice inside your IDE as a Spring Boot application.
 
-##How to deploy to Cumulocity
+## How to deploy to Cumulocity
 
 The Microservice comes with the `microservice-package-maven-plugin`, which enables the build of the Microservice using Maven, including a Docker image in case Docker is available on the build system. To trigger the build run `mvn clean install` for the project. To enable the build of the Docker Image set the property `<c8y.docker.skip>false</c8y.docker.skip>` in the `pom.xml` within the `./ttn-integration/c8y-ttn-integration` directory.      
 
