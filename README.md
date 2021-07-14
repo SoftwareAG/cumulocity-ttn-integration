@@ -129,7 +129,7 @@ The Microservice is based on the Cumulocity Java Microservice SDK. For an introd
 
     The Microservice can be accessed on `http://localhost:8080/` by sending a POST request and the corresponding payload as described in the previous section. Make sure to set the correct authorization when running it locally, username needs to be `tenantId/username`. 
 
-##How to deploy to Cumulocity
+## How to deploy to Cumulocity
 
 The Microservice comes with the `microservice-package-maven-plugin`, which enables the build of the Microservice using Maven, including a Docker image in case Docker is available on the build system. To trigger the build run `mvn clean install` for the project. To enable the build of the Docker Image set the property `<c8y.docker.skip>false</c8y.docker.skip>` in the `pom.xml` within the `./ttn-integration/c8y-ttn-integration` directory.      
 
