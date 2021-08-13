@@ -2,9 +2,9 @@
 
 ## Summary
 
-This Cumulocity Microservice enables your [Cumulocity IoT](https://www.softwareag.cloud/site/product/cumulocity-iot.html#/) tenant to integrate with the LoRa network provider [The Things Network (TTN)](https://www.thethingsnetwork.org ). This integration allows to receive uplink messages from TTN and process them within Cumulocity IoT, e.g. extract Measurements or Events from the message. Based on the data received from TTN you can use the viusalization and Streaming Analytics capabilities of Cumulocity for further processing.
+This Cumulocity Microservice enables your [Cumulocity IoT](https://www.softwareag.cloud/site/product/cumulocity-iot.html#/) tenant to integrate with the LoRa network provider [The Things Network (TTN)](https://www.thethingsnetwork.org ). This integration allows receiving uplink messages from TTN and processing them within Cumulocity IoT, e.g. extract Measurements or Events from the message. Based on the data received from TTN you can use the visualization and Streaming Analytics capabilities of Cumulocity for further processing.
 
-The TTN integration is compatible with latest version of **The Things Stack V3**.
+The TTN integration is compatible with the latest version of **The Things Stack V3**.
 
 ## Some more details
 
@@ -58,11 +58,11 @@ The Microservice exposes a single REST endpoint. This endpoint will be used in T
 
 For now the fields `device_id`, `application_id`, `dev_eui`, `received_at`, `f_port` and `frm_payload` are processed by the Microservice.
 
-A device will automatically be created in Cumulocity if a message has been received for this device the first time but it isn't registered yet. For mapping the messages to the domain model of Cumulocity, the Microservice uses the [Device Protocol](https://cumulocity.com/guides/protocol-integration/lora-loriot/#create-loriot-device-protocols) feature of Cumulocity. Therefore, if a device has been newly registered in Cumulocity via the TTN integration Microservice the corresponding Device Protocol needs to be assigned to the respective device first. This needs to be done in the Device Management application of Cumulocity on the related device detail page, e.g:
+A device will automatically be created in Cumulocity if a message has been received for a LoRa sensor, which hasn't been registered as a device in Cumulocity yet. For mapping the messages to the domain model of Cumulocity, the Microservice uses the [Device Protocol](https://cumulocity.com/guides/protocol-integration/lora-loriot/#create-loriot-device-protocols) feature of Cumulocity IoT. Therefore, if a device has been newly registered in Cumulocity via the TTN integration Microservice the corresponding Device Protocol needs to be assigned to the respective device first. This needs to be done in the Device Management application of Cumulocity on the related device detail page, e.g:
 
 ![Assign a device protocol for a device](https://labcase.softwareag.com/storage/d/ebe7a553c15171d8b4e4f230f897a1df "Assign Device Protocol")  
 
-The Microservice will pick up the related Device Protocol for the device. When a new message is being received from TTN for the device, the Microservice will use the Device Protocol to translate the message into the respective domain objects of Cumulocity.
+The Microservice will pick up the related Device Protocol for the device. When a new message has been received from TTN for the device, the Microservice will use the Device Protocol to translate the message into the respective domain objects of Cumulocity.
 
 ## How to run locally
 
@@ -127,17 +127,17 @@ The Microservice is based on the Cumulocity Java Microservice SDK. For an introd
 
 6. Access Microservice locally
 
-    The Microservice can be accessed on `http://localhost:8080/` by sending a POST request and the corresponding payload as described in the previous section. Make sure to set the correct authorization when running it locally, username needs to be `tenantId/username`. 
+    The Microservice can be accessed on `http://localhost:8080/` by sending a POST request, which contains the corresponding payload as described in the previous section. Make sure to set the correct authorization when running it locally, username needs to be `tenantId/username`. 
 
 ## How to deploy to Cumulocity
 
-The Microservice comes with the `microservice-package-maven-plugin`, which enables the build of the Microservice using Maven, including a Docker image in case Docker is available on the build system. To trigger the build run `mvn clean install` for the project. To enable the build of the Docker Image set the property `<c8y.docker.skip>false</c8y.docker.skip>` in the `pom.xml` within the `./ttn-integration/c8y-ttn-integration` directory.      
+The Microservice comes with the `microservice-package-maven-plugin`, which enables building the Microservice using Maven, including a Docker image in case Docker is available on the build system. To trigger the build run `mvn clean install` for the project. To enable the build of the Docker Image set the property `<c8y.docker.skip>false</c8y.docker.skip>` to `true` in the `pom.xml` within the `./ttn-integration/c8y-ttn-integration` directory.      
 
 If the build has been successful the build artifacts can be found in the `target` directory. If the Docker build has been enabled the `target` directory also includes a zip archive. The zip archive consists of the Docker Image and the Cumulocity Microservice manifest. Upload the zip archive as Microservice application in the Administration application of Cumulocity to deploy the Microservice within Cumulocity. 
 
 For more information about deploying a Microservice check the [documentation](https://cumulocity.com/guides/microservice-sdk/java/#developing-microservice).  
 
-Check the release section for the latest build.
+Check the release section for the latest build of this Microservice.
 
 ## Disclaimer
 
