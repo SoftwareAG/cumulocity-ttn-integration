@@ -4,9 +4,18 @@
 
 This Cumulocity Microservice enables your [Cumulocity IoT](https://www.softwareag.cloud/site/product/cumulocity-iot.html#/) tenant to integrate with the LoRa network provider [The Things Network (TTN)](https://www.thethingsnetwork.org ). This integration allows receiving uplink messages from TTN and processing them within Cumulocity IoT, e.g. extract Measurements or Events from the message. Based on the data received from TTN you can use the visualization and Streaming Analytics capabilities of Cumulocity for further processing.
 
-The TTN integration is compatible with the latest version of **The Things Stack V3**.
+The TTN-Integration Microservice is compatible with the latest version of **The Things Stack V3**.
+
+The TTN-Integration Microservice can be downloaded from the [release section](https://github.com/SoftwareAG/cumulocity-ttn-integration/releases/download/v1.0.0/devicemanagement.zip) and uploaded in Cumulocity IoT as a Microservice application.
 
 ## Some more details
+
+There are some prerequisites to run this solution properly:
+
+* To upload a custom Microservice to your tenant you need to have the `feature-microservice-hosting` feature subscribed
+* LoRa Device Protocols need to be enabled for the tenant
+  * Option 1: Subscribe either the `actility` feature ot the `loriot-agent` feature
+  * Option 2: Download custom DeviceManagement application from [release section](https://github.com/SoftwareAG/cumulocity-ttn-integration/releases/download/v1.0.0/devicemanagement.zip) and upload it as Web Application to override the existing DeviceManagement application. ONce the TTN Microservice has been uploaded the LoRa Device Protocols feature will be activated.
 
 The Microservice exposes a single REST endpoint. This endpoint will be used in TTN for the Webhooks integration to forward data received from devices in TTN to Cumulocity IoT. 
 
