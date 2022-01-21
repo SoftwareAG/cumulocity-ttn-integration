@@ -6,7 +6,7 @@
 
     <groupId>com.cumulocity</groupId>
     <artifactId>c8y-lora</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <packaging>pom</packaging>
 
     <name>c8y-lora-parent</name>
@@ -16,6 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
         <spring-boot-dependencies.version>2.2.4.RELEASE</spring-boot-dependencies.version>
 
         <c8y.version>1011.0.0</c8y.version>

@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.cumulocity</groupId>
 		<artifactId>c8y-lora</artifactId>
-		<version>1.0.0</version>
+		<version>1.1.0</version>
 	</parent>
 	
 	<artifactId>c8y-ttn-integration</artifactId>
